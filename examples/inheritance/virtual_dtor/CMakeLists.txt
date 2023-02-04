@@ -1,14 +1,14 @@
 
-add_executable(inheritance_vtable)
+add_executable(virtual_dtor)
 
 target_sources(
-  inheritance_vtable
+  virtual_dtor
   PRIVATE
   src/main.cpp
 )
 
 target_link_libraries(
-  inheritance_vtable
+  virtual_dtor
   PRIVATE
   fmt
 )
