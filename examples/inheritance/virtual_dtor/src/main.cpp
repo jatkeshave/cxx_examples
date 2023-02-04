@@ -94,6 +94,11 @@ int main() {
 
     fmt::print("{}\n", separatorStr2);
 
+    fmt::print("\n");
+    fmt::print("\n");
+
+    fmt::print("All the pointers are raw pointer\n");
+    fmt::print("{}\n", separatorStr2);
     {
         fmt::print("Example of correct versions of class A, B & C\n");
         CorrectA *ptrA = new CorrectA{"ptrA"};
@@ -103,9 +108,7 @@ int main() {
         CorrectA *ptrCtoA = new CorrectC{"ptrCtoA"};
 
         fmt::print("\n");
-
-        fmt::print("Going out of scope...\n");
-        fmt::print("{}\n", separatorStr2);
+        fmt::print("Destructing...\n");
 
         delete ptrCtoA;
         delete ptrBtoA;
@@ -113,10 +116,7 @@ int main() {
         delete ptrB;
         delete ptrA;
     }
-    fmt::print("{}\n", separatorStr3);
-
-    fmt::print("\n");
-
+    fmt::print("{}\n", separatorStr);
     {
         fmt::print("Example of incorrect versions of class A, B & C\n");
         IncorrectA *ptrA = new IncorrectA("ptrA");
@@ -126,15 +126,75 @@ int main() {
         IncorrectA *ptrCtoA = new IncorrectC{"ptrCtoA"};
 
         fmt::print("\n");
-
-        fmt::print("Going out of scope...\n");
-        fmt::print("{}\n", separatorStr2);
+        fmt::print("Destructing...\n");
 
         delete ptrCtoA;
         delete ptrBtoA;
         delete ptrC;
         delete ptrB;
         delete ptrA;
+    }
+    fmt::print("{}\n", separatorStr3);
+
+
+    fmt::print("\n");
+    fmt::print("\n");
+
+    fmt::print("All the pointers are unique_ptr\n");
+    fmt::print("{}\n", separatorStr2);
+    {
+        fmt::print("Example of correct versions of class A, B & C\n");
+        std::unique_ptr<CorrectA> ptrA = std::make_unique<CorrectA>("ptrA");
+        std::unique_ptr<CorrectB> ptrB = std::make_unique<CorrectB>("ptrB");
+        std::unique_ptr<CorrectC> ptrC = std::make_unique<CorrectC>("ptrC");
+        std::unique_ptr<CorrectA> ptrBtoA = std::make_unique<CorrectB>("ptrBtoA");
+        std::unique_ptr<CorrectA> ptrCtoA = std::make_unique<CorrectC>("ptrCtoA");
+
+        fmt::print("\n");
+        fmt::print("Destructing...\n");
+    }
+    fmt::print("{}\n", separatorStr);
+    {
+        fmt::print("Example of incorrect versions of class A, B & C\n");
+        std::unique_ptr<IncorrectA> ptrA = std::make_unique<IncorrectA>("ptrA");
+        std::unique_ptr<IncorrectB> ptrB = std::make_unique<IncorrectB>("ptrB");
+        std::unique_ptr<IncorrectC> ptrC = std::make_unique<IncorrectC>("ptrC");
+        std::unique_ptr<IncorrectA> ptrBtoA = std::make_unique<IncorrectB>("ptrBtoA");
+        std::unique_ptr<IncorrectA> ptrCtoA = std::make_unique<IncorrectC>("ptrCtoA");
+
+        fmt::print("\n");
+        fmt::print("Destructing...\n");
+    }
+    fmt::print("{}\n", separatorStr3);
+
+
+    fmt::print("\n");
+    fmt::print("\n");
+
+    fmt::print("All the pointers are shared_ptr\n");
+    fmt::print("{}\n", separatorStr2);
+    {
+        fmt::print("Example of correct versions of class A, B & C\n");
+        std::shared_ptr<CorrectA> ptrA = std::make_shared<CorrectA>("ptrA");
+        std::shared_ptr<CorrectB> ptrB = std::make_shared<CorrectB>("ptrB");
+        std::shared_ptr<CorrectC> ptrC = std::make_shared<CorrectC>("ptrC");
+        std::shared_ptr<CorrectA> ptrBtoA = std::make_shared<CorrectB>("ptrBtoA");
+        std::shared_ptr<CorrectA> ptrCtoA = std::make_shared<CorrectC>("ptrCtoA");
+
+        fmt::print("\n");
+        fmt::print("Destructing...\n");
+    }
+    fmt::print("{}\n", separatorStr);
+    {
+        fmt::print("Example of incorrect versions of class A, B & C\n");
+        std::shared_ptr<IncorrectA> ptrA = std::make_shared<IncorrectA>("ptrA");
+        std::shared_ptr<IncorrectB> ptrB = std::make_shared<IncorrectB>("ptrB");
+        std::shared_ptr<IncorrectC> ptrC = std::make_shared<IncorrectC>("ptrC");
+        std::shared_ptr<IncorrectA> ptrBtoA = std::make_shared<IncorrectB>("ptrBtoA");
+        std::shared_ptr<IncorrectA> ptrCtoA = std::make_shared<IncorrectC>("ptrCtoA");
+
+        fmt::print("\n");
+        fmt::print("Destructing...\n");
     }
     fmt::print("{}\n", separatorStr3);
 
