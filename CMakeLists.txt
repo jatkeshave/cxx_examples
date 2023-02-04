@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.24)
-project(untitled)
+project(
+  exx_example
+  LANGUAGES CXX
+)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-add_executable(untitled main.cpp)
+add_subdirectory(examples)
