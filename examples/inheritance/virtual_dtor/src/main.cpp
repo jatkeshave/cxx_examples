@@ -90,43 +90,39 @@ int main() {
 
     fmt::print("Demonstrating an example of virtual destructor. Why it is required.\n"
                "What is its use and how to use it.\n"
-               "There are 2 sets of class A, B & C respectively Correct & Incorrect.");
+               "There are 2 sets of class A, B & C respectively Correct & Incorrect.\n");
 
     fmt::print("{}\n", separatorStr2);
 
     {
-        fmt::print("Example of correct versions of class A, B & C");
-        fmt::print("Creating instance of class CorrectA on heap(shared_pointer)\n");
-        std::shared_ptr<CorrectA> ptrA = std::make_shared<CorrectA>("ptrA");
-        fmt::print("Creating instance of class CorrectB on heap(shared_pointer)\n");
-        std::shared_ptr<CorrectB> ptrB = std::make_shared<CorrectB>("ptrB");
-        fmt::print("Creating instance of class CorrectC on heap\n");
-        std::shared_ptr<CorrectC> ptrC = std::make_shared<CorrectC>("ptrC");
-        fmt::print("Casting CorrectB pointer to pointer CorrectA\n");
-        std::shared_ptr<CorrectA> ptrBtoA{new CorrectB{"ptrBtoA"}};
-        fmt::print("Casting CorrectC pointer to pointer CorrectA\n");
-        std::shared_ptr<CorrectA> ptrCtoA{new CorrectC{"ptrCtoA"}};
+        fmt::print("Example of correct versions of class A, B & C\n");
+        CorrectA *ptrA = new CorrectA{"ptrA"};
+        CorrectB *ptrB = new CorrectB{"ptrB"};
+        CorrectC *ptrC = new CorrectC{"ptrC"};
+        CorrectA *ptrBtoA = new CorrectB{"ptrBtoA"};
+        CorrectA *ptrCtoA = new CorrectC{"ptrCtoA"};
 
         fmt::print("\n");
 
         fmt::print("Going out of scope...\n");
         fmt::print("{}\n", separatorStr2);
+
+        delete ptrCtoA;
+        delete ptrBtoA;
+        delete ptrC;
+        delete ptrB;
+        delete ptrA;
     }
     fmt::print("{}\n", separatorStr3);
 
     fmt::print("\n");
 
     {
-        fmt::print("Example of incorrect versions of class A, B & C");
-        fmt::print("Creating instance of class IncorrectA on heap(shared_pointer)\n");
+        fmt::print("Example of incorrect versions of class A, B & C\n");
         IncorrectA *ptrA = new IncorrectA("ptrA");
-        fmt::print("Creating instance of class IncorrectB on heap(shared_pointer)\n");
         IncorrectB *ptrB = new IncorrectB("ptrB");
-        fmt::print("Creating instance of class IncorrectC on heap\n");
         IncorrectC *ptrC = new IncorrectC("ptrC");
-        fmt::print("Casting IncorrectB pointer to pointer IncorrectA\n");
         IncorrectA *ptrBtoA = new IncorrectB{"ptrBtoA"};
-        fmt::print("Casting IncorrectC pointer to pointer IncorrectA\n");
         IncorrectA *ptrCtoA = new IncorrectC{"ptrCtoA"};
 
         fmt::print("\n");
